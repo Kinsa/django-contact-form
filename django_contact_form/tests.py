@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test.client import Client
 
-class SimpleTest(TestCase):
+class RoutingTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.post_dict = {'email': 'nobody@example.com', 
@@ -31,7 +31,7 @@ class SimpleTest(TestCase):
         self.failUnlessEqual(response.status_code, 200)
 
         # Check that the correct template is being used.
-        self.assertTemplateUsed(response, 'contact/thanks.html')
+        self.assertTemplateUsed(response, 'contact/success.html')
         
         # Check that the response is being properly routed.
         self.failUnlessEqual(response.redirect_chain, [('http://testserver/contact/thanks/', 302)])
