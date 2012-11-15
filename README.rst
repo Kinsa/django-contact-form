@@ -18,7 +18,7 @@ Include in the PIP requirements file the following line:
 
 ::
 
- -e git+git@github.com:jbergantine/django-contact-form.git#egg=django_contact_form
+ -e git://github.com:jbergantine/django-contact-form.git#egg=django_contact_form
 
 And then install as normal (IE:)
 
