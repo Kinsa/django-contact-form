@@ -6,7 +6,8 @@ class RoutingTest(TestCase):
         self.client = Client()
         self.post_dict = {'email': 'nobody@example.com', 
                           'subject': 'Test', 
-                          'message': 'This is a test message.'}
+                          'message': 'This is a test message.',
+                          'captcha': '13'}
     
     def test_form_url(self):
         # Issue a GET request.
