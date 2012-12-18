@@ -60,3 +60,53 @@ class RoutingTest(TestCase):
         self.post_dict['email'] = 'nobody@example'
         response = self.client.post('/contact/', self.post_dict)
         self.assertFormError(response, 'form', 'email', [u'Enter a valid e-mail address.'])
+
+    def test_captcha_accepts_integer(self):
+        response = self.client.post('/contact/', self.post_dict, follow=True)
+
+        # Check that the response is 200 OK.
+        self.failUnlessEqual(response.status_code, 200)
+
+        # Check that the correct template is being used.
+        self.assertTemplateUsed(response, 'contact/success.html')
+        
+        # Check that the response is being properly routed.
+        self.failUnlessEqual(response.redirect_chain, [('http://testserver/contact/thanks/', 302)])
+
+    def test_captcha_accepts_string(self):
+        self.post_dict['captcha'] = 'thirteen'
+        
+        response = self.client.post('/contact/', self.post_dict, follow=True)
+
+        # Check that the response is 200 OK.
+        self.failUnlessEqual(response.status_code, 200)
+
+        # Check that the correct template is being used.
+        self.assertTemplateUsed(response, 'contact/success.html')
+        
+        # Check that the response is being properly routed.
+        self.failUnlessEqual(response.redirect_chain, [('http://testserver/contact/thanks/', 302)])
+
+    def test_captcha_accepts_case_incensitive_string(self):
+        self.post_dict['captcha'] = 'ThIrTeEN'
+        
+        response = self.client.post('/contact/', self.post_dict, follow=True)
+
+        # Check that the response is 200 OK.
+        self.failUnlessEqual(response.status_code, 200)
+
+        # Check that the correct template is being used.
+        self.assertTemplateUsed(response, 'contact/success.html')
+        
+        # Check that the response is being properly routed.
+        self.failUnlessEqual(response.redirect_chain, [('http://testserver/contact/thanks/', 302)])
+
+    def test_captcha_fails_with_invalid_value(self):
+        self.post_dict['captcha'] = 'spam'
+        response = self.client.post('/contact/', self.post_dict)
+        self.assertFormError(response, 'form', 'captcha', [u'Double check your math.'])
+
+    def test_captcha_is_required(self):
+        self.post_dict['captcha'] = ''
+        response = self.client.post('/contact/', self.post_dict)
+        self.assertFormError(response, 'form', 'captcha', [u'This field is required.'])
