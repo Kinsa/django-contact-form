@@ -14,16 +14,14 @@ def contact(request):
         if form.is_valid():
             cd = form.cleaned_data
             send_mail(
-                cd['subject'],
+                'Message from your Django Contact Form',  # Email Subject
                 cd['message'],
-                cd.get('email', cd['email']),
-                [i[1] for i in recipients], # send to managers as defined in project's settings.py file
+                cd.get('email', cd['email']),  # Email From
+                [i[1] for i in recipients],
             )
             return HttpResponseRedirect(reverse('success'))
     else:
-        form = ContactForm(
-            #initial={'subject': 'Message from the contact form.'} # prepopulates the subject line
-        )
+        form = ContactForm()
 
     if request.is_ajax():
         return render_to_response('contact/form.html', {'form': form}, 
