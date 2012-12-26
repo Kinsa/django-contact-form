@@ -5,7 +5,6 @@ class RoutingTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.post_dict = {'email': 'nobody@example.com', 
-                          'subject': 'Test', 
                           'message': 'This is a test message.',
                           'captcha': '13'}
     
@@ -37,20 +36,10 @@ class RoutingTest(TestCase):
         # Check that the response is being properly routed.
         self.failUnlessEqual(response.redirect_chain, [('http://testserver/contact/thanks/', 302)])
 
-    def test_subject_is_required(self):
-        self.post_dict['subject'] = ''
-        response = self.client.post('/contact/', self.post_dict)
-        self.assertFormError(response, 'form', 'subject', [u'This field is required.'])
-        
     def test_message_is_required(self):
         self.post_dict['message'] = ''
         response = self.client.post('/contact/', self.post_dict)
         self.assertFormError(response, 'form', 'message', [u'This field is required.'])
-    
-    def test_message_must_be_4_words_long(self):
-        self.post_dict['message'] = 'one two three'
-        response = self.client.post('/contact/', self.post_dict)
-        self.assertFormError(response, 'form', 'message', [u'This must be at least 4 words in length.'])
     
     def test_email_address_is_required(self):
         self.post_dict['email'] = ''
