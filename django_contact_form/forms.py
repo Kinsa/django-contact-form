@@ -15,10 +15,3 @@ class ContactForm(forms.Form):
             raise forms.ValidationError("Double check your math.")
         return captcha
 
-    def clean_message(self):
-        message = self.cleaned_data['message']
-        num_words = len(message.split())
-        if num_words < 4:
-            raise forms.ValidationError("This must be at least 4 words in"\
-                                        " length.")
-        return message
