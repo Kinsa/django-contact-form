@@ -1,4 +1,6 @@
 Copyright (c) 2010, Joe Bergantine
+
+Includes code from django-contact-form by James Bennett.
 Copyright (c) 2007, James Bennett
 All rights reserved.
 
