@@ -14,10 +14,11 @@ Installation from Source
 Installation via PIP Requirements File
 ======================================
 
-Include in the PIP requirements file the following line:
+Include in the PIP requirements file the following lines:
 
 ::
 
+ django-floppyforms
  -e git://github.com/jbergantine/django-contact-form.git#egg=django_contact_form
 
 And then install as normal (IE:)
@@ -31,6 +32,7 @@ Setup the Project For the Application
 
 Add to the project's settings.py file tuple of installed apps: ::
 
+ 'floppyforms',
  'django_contact_form',
 
 In the project's urls.py file add: ::
