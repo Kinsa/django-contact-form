@@ -72,4 +72,4 @@ Enable the Sites Framework if Desired
 
 With the Sites Framework enabled, the subject of the contact form will indicate that it is from the name of the currently enabled website. Without this the subject indicates the form has been sent by 'your website.'
 
-To enable the Sites Framework, `follow the directions in the Django documentation`<https://docs.djangoproject.com/en/dev/ref/contrib/sites/#enabling-the-sites-framework>_.
+To enable the Sites Framework, `follow the directions in the Django documentation <https://docs.djangoproject.com/en/dev/ref/contrib/sites/#enabling-the-sites-framework>`_.
