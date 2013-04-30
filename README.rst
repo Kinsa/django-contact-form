@@ -66,3 +66,10 @@ Configure the Templates
 By default the templates contain only the bare necessities. To override the default templates, create a directory called contact in your templates directory and add 2 files: contact_form.html and thanks.html. If you're using virtualenv, to copy the templates from the project in order to make adjustments to them, cd to the root of the django project and execute the following command: ::
 
  cp -r $VIRTUAL_ENV/src/django-contact-form/django_contact_form/templates/contact templates/contact
+
+Enable the Sites Framework if Desired
+=====================================
+
+With the Sites Framework enabled, the subject of the contact form will indicate that it is from the name of the currently enabled website. Without this the subject indicates the form has been sent by 'your website.'
+
+To enable the Sites Framework, [follow the directions in the Django documentation](https://docs.djangoproject.com/en/dev/ref/contrib/sites/#enabling-the-sites-framework).
