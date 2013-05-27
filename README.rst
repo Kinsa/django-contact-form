@@ -11,8 +11,6 @@ Installation from Source
  $ cd django-contact-form
  $ python setup.py install
 
-You will also have to install `Django Floppyforms <http://pypi.python.org/pypi/django-floppyforms>`_.
-
 Installation via PIP Requirements File
 ======================================
 
