@@ -20,7 +20,6 @@ Include in the PIP requirements file the following lines:
 
 ::
 
- django-floppyforms
  -e git://github.com/jbergantine/django-contact-form.git#egg=django_contact_form
 
 And then install as normal (IE:)
