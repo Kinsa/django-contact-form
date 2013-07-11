@@ -6,7 +6,7 @@ from django_contact_form.views import contact
 
 urlpatterns = patterns('',
     url(r'^$', contact, {}, 'contact'),
-    url(r'^thanks/$', 
+    url(r'^thanks/$',
         TemplateView.as_view(template_name="contact/success.html"),
         name='success'),
 )
