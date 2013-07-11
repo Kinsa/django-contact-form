@@ -30,8 +30,8 @@ def contact(request):
         form = ContactForm()
 
     if request.is_ajax():
-        return render_to_response('contact/form.html', {'form': form}, 
+        return render_to_response('contact/form.html', {'form': form},
                                   context_instance=RequestContext(request))
     else:
-        return render_to_response('contact/contact_form.html', {'form': form}, 
+        return render_to_response('contact/contact_form.html', {'form': form},
                                   context_instance=RequestContext(request))
