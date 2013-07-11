@@ -21,9 +21,9 @@ def contact(request):
             cd = form.cleaned_data
             send_mail(
                 'Message from %s' % current_site_name,  # Email Subject
-                cd['message'],
-                cd.get('email', cd['email']),  # Email From
-                [i[1] for i in recipients],
+                cd['message'],  # Email Body
+                cd.get('email', cd['email']),  # Email From Value (Sender)
+                [i[1] for i in recipients],  # Email Recipients
             )
             return HttpResponseRedirect(reverse('success'))
     else:
