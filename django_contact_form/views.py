@@ -11,10 +11,10 @@ from django.template import RequestContext
 from django_contact_form.forms import ContactForm
 
 
-def send_mail_wrapped(cleaned_data, current_site_name, recipients, sender_email):
+def send_mail_wrapped(current_site_name, message, recipients, sender_email):
     send_mail(
         'Message from %s' % current_site_name,  # Email Subject
-        cleaned_data['message'],  # Email Body
+        '%s' % message,  # Email Body
         sender_email,  # Email From Value (Sender)
         [i[1] for i in recipients],  # Email Recipients
     )
@@ -26,16 +26,18 @@ def contact(request):
         current_site_name = 'your website'
 
     recipients = getattr(settings, 'CONTACT_FORM_RECIPIENTS', settings.MANAGERS)
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
+
         if form.is_valid():
-            cleaned_data = form.cleaned_data
-            sender_email = cleaned_data.get('email', cleaned_data['email'])
+            sender_email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
 
             try:
-                send_mail_wrapped(cleaned_data, current_site_name, recipients, sender_email)
+                send_mail_wrapped(current_site_name, message, recipients, sender_email)
             except SMTPRecipientsRefused:  # Some clients (Google, Microsoft) want you to use their SMTP servers
-                send_mail_wrapped(cleaned_data, current_site_name, recipients, settings.DEFAULT_FROM_EMAIL)
+                send_mail_wrapped(current_site_name, message, recipients, settings.DEFAULT_FROM_EMAIL)
 
             return HttpResponseRedirect(reverse('success'))
     else:
