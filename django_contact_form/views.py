@@ -36,7 +36,9 @@ def contact(request):
 
             try:
                 send_mail_wrapped(current_site_name, message, recipients, sender_email)
-            except SMTPRecipientsRefused:  # Some clients (Google, Microsoft) want you to use their SMTP servers
+            except SMTPRecipientsRefused:  
+                # Some clients (Google, Microsoft) want you to use their SMTP servers
+                # In that case, fall back on the DEFAULT_FROM_EMAIL constant
                 send_mail_wrapped(current_site_name, message, recipients, settings.DEFAULT_FROM_EMAIL)
 
             return HttpResponseRedirect(reverse('success'))
