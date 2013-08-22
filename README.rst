@@ -50,12 +50,13 @@ Form submissions will go to either a list of recipients defined in a custom tupl
 Configure Email Settings for Sending
 ====================================
 
-In the project's settings.py file configure the following: ::
+In the project's settings.py file, add and configure the following: ::
 
  EMAIL_HOST = ''
  EMAIL_HOST_USER = ''
  EMAIL_HOST_PASSWORD = ''
  DEFAULT_FROM_EMAIL = ''
+ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 Configure the Templates
 =======================
