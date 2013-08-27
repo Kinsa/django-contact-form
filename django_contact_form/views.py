@@ -18,7 +18,8 @@ def send_mail_wrapped(current_site_name, message, recipients, sender_email):
         sender_email,  # Email From Value (Sender)
         [i[1] for i in recipients],  # Email Recipients
     )
-    
+
+
 def contact(request):
     try:
         current_site_name = Site.objects.get_current().name
