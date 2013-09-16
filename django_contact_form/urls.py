@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic.base import TemplateView
 
-from django_contact_form.views import contact
+from .views import contact
 
 
 urlpatterns = patterns('',
