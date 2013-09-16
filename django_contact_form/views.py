@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from django_contact_form.forms import ContactForm
+from .forms import ContactForm
 
 
 def send_mail_wrapped(current_site_name, message, recipients, sender_email):
