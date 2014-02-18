@@ -31,6 +31,7 @@ Setup the Project For the Application
 
 Add to the project's settings.py file tuple of installed apps: ::
 
+ 'floppyforms',
  'django_contact_form',
 
 In the project's urls.py file add: ::
