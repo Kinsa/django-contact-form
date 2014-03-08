@@ -36,9 +36,10 @@ Add to the project's settings.py file tuple of installed apps: ::
 
 In the project's urls.py file add: ::
 
- url(r'^contact/', include('django_contact_form.urls')),
+ url(r'^contact/',
+     include('django_contact_form.urls', namespace='contact')),
  
-This makes the form available at ``{% url 'contact' %}`` and the success page available at ``{% url 'success' %}``.
+This makes the form available at ``{% url 'contact:contact' %}`` and the success page available at ``{% url 'contact:success' %}``.
 
 Setup the Recipients of the Contact Form
 ========================================
