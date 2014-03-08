@@ -1,17 +1,18 @@
 import os
+
 from setuptools import setup
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
-version = __import__('django_contact_form').__version__
+README = open(os.path.join(os.path.dirname(__file__),
+              'README.rst')).read()
+
+VERSION = __import__('django_contact_form').__version__
 
 setup(
     name='django-contact-form',
-    version=version,
+    version=VERSION,
     description="Contact Form for Django",
-    long_description="""django-contact-form creates a contact form application
-for Django projects. See the project page for more information:
-  https://github.com/jbergantine/django-contact""",
+    long_description=README,
     author='Joe Bergantine',
     author_email='jbergantine@gmail.com',
     maintainer='Joe Bergantine',
