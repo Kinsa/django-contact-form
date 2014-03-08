@@ -61,7 +61,7 @@ class RoutingTest(TestCase):
         self.post_dict['email'] = 'nobody@example'
         response = self.client.post(reverse('contact:contact'), self.post_dict)
         self.assertFormError(response, 'form', 'email',
-                             [u'Enter a valid e-mail address.'])
+                             [u'Enter a valid email address.'])
 
     def test_captcha_accepts_integer(self):
         response = self.client.post(reverse('contact:contact'),
