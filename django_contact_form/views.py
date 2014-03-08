@@ -43,7 +43,7 @@ def contact(request):
                 message = 'Message from: %s\n---\n\n%s' % (form.cleaned_data['email'], form.cleaned_data['message'])
                 send_mail_wrapped(current_site_name, message, recipients, settings.DEFAULT_FROM_EMAIL)
 
-            return HttpResponseRedirect(reverse('success'))
+            return HttpResponseRedirect(reverse('contact:success'))
     else:
         form = ContactForm()
 
