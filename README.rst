@@ -37,6 +37,8 @@ Add to the project's settings.py file tuple of installed apps: ::
 In the project's urls.py file add: ::
 
  url(r'^contact/', include('django_contact_form.urls')),
+ 
+This makes the form available at ``{% url 'contact' %}`` and the success page available at ``{% url 'success' %}``.
 
 Setup the Recipients of the Contact Form
 ========================================
@@ -68,6 +70,6 @@ By default the templates contain only the bare necessities. To override the defa
 Enable the Sites Framework if Desired
 =====================================
 
-With the Sites Framework enabled, the subject of the contact form will indicate that it is from the name of the currently enabled website. Without this the subject indicates the form has been sent by 'your website.'
+With the Sites Framework enabled, the subject of the contact form will indicate that it is from the name of the currently enabled website. Without this the subject indicates the form has been sent by 'your website'.
 
 To enable the Sites Framework, `follow the directions in the Django documentation <https://docs.djangoproject.com/en/dev/ref/contrib/sites/#enabling-the-sites-framework>`_.
