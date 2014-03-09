@@ -19,7 +19,7 @@ setup(
     maintainer_email='jbergantine@gmail.com',
     url='https://github.com/jbergantine/django-contact-form',
     license='New BSD License',
-    install_requires=['django-floppyforms'],
+    install_requires=['django>=1.4', 'django-floppyforms'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
