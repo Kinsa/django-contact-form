@@ -34,7 +34,7 @@ Add to the project's ``settings.py`` file tuple of installed apps: ::
  'floppyforms',
  'django_contact_form',
 
-In the project's urls.py file add: ::
+In the project's ``urls.py`` file add: ::
 
  url(r'^contact/',
      include('django_contact_form.urls', namespace='contact')),
@@ -80,3 +80,4 @@ Developing
 
 django_contact_form follows the `Git Flow branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_.
 
+When releasing, bump the version number in the app's ``__init__.py`` file.
