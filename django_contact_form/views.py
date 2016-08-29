@@ -5,8 +5,7 @@ from django.contrib.sites.models import Site
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
 from .forms import ContactForm
 
@@ -35,21 +34,44 @@ def contact(request):
             sender_email = form.cleaned_data['email']
 
             try:
-                send_mail_wrapped(current_site_name, form.cleaned_data['message'], recipients, sender_email)
-            except SMTPRecipientsRefused:  
-                # Some clients (Google, Microsoft) want you to use their SMTP servers
-                # In that case, fall back on the DEFAULT_FROM_EMAIL constant
-                # We will need to include the sender's email in the body then since the email will no longer be from then
-                message = 'Message from: %s\n---\n\n%s' % (form.cleaned_data['email'], form.cleaned_data['message'])
-                send_mail_wrapped(current_site_name, message, recipients, settings.DEFAULT_FROM_EMAIL)
+                send_mail_wrapped(
+                    current_site_name,
+                    form.cleaned_data['message'],
+                    recipients,
+                    sender_email
+                )
+
+            except SMTPRecipientsRefused:
+                # Some clients (Google, Microsoft) require use of their SMTP
+                # servers. In that case, fall back on the DEFAULT_FROM_EMAIL
+                # constant, including the sender's email in the body since their
+                # email will no longer be from them.
+
+                message = 'Message from: %s\n---\n\n%s' % (
+                    form.cleaned_data['email'],
+                    form.cleaned_data['message']
+                )
+
+                send_mail_wrapped(
+                    current_site_name,
+                    message,
+                    recipients,
+                    settings.DEFAULT_FROM_EMAIL
+                )
 
             return HttpResponseRedirect(reverse('contact:success'))
     else:
         form = ContactForm()
 
     if request.is_ajax():
-        return render_to_response('contact/form.html', {'form': form},
-                                  context_instance=RequestContext(request))
+        return render(
+            request,
+            'contact/form.html',
+            {'form': form},
+        )
     else:
-        return render_to_response('contact/contact_form.html', {'form': form},
-                                  context_instance=RequestContext(request))
+        return render(
+            request,
+            'contact/contact_form.html',
+            {'form': form},
+        )

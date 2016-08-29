@@ -3,10 +3,9 @@ import os
 from setuptools import setup
 
 
-README = open(os.path.join(os.path.dirname(__file__),
-              'README.rst')).read()
+README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
-VERSION = __import__('django_contact_form').__version__
+VERSION = 1.6
 
 setup(
     name='django-contact-form',
@@ -19,7 +18,7 @@ setup(
     maintainer_email='jbergantine@gmail.com',
     url='https://github.com/jbergantine/django-contact-form',
     license='New BSD License',
-    install_requires=['django>=1.4', 'django-floppyforms'],
+    install_requires=['django>=1.7', 'django-floppyforms'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
@@ -30,4 +29,5 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    test_suite="runtests.runtests",
 )
