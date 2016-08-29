@@ -42,7 +42,7 @@ class RoutingTest(TestCase):
         # Check that the response is being properly routed.
         self.assertRedirects(
             response,
-            'http://testserver/contact/thanks/',
+            reverse('contact:success'),
             host='testserver'
         )
 
@@ -80,7 +80,7 @@ class RoutingTest(TestCase):
         # Check that the response is being properly routed.
         self.assertRedirects(
             response,
-            'http://testserver/contact/thanks/',
+            reverse('contact:success'),
             host='testserver'
         )
 
@@ -100,7 +100,7 @@ class RoutingTest(TestCase):
         # Check that the response is being properly routed.
         self.assertRedirects(
             response,
-            'http://testserver/contact/thanks/',
+            reverse('contact:success'),
             host='testserver'
         )
 
@@ -120,7 +120,7 @@ class RoutingTest(TestCase):
         # Check that the response is being properly routed.
         self.assertRedirects(
             response,
-            'http://testserver/contact/thanks/',
+            reverse('contact:success'),
             host='testserver'
         )
 
