@@ -92,13 +92,14 @@ django_contact_form follows the `Git Flow branching model <http://nvie.com/posts
 When releasing, bump the version number in the project's ``setup.py`` file.
 
 Testing
-=======
+-------
 
 ::
 
  $ python setup.py test
 
 With TOX
+^^^^^^^^
 
 First, install Tox, then run the tests. This will test against the Django versions specified in the environments specified in the ``tox.ini`` file
 
