@@ -2,7 +2,7 @@
  Django Contact Form
 =====================
 
-A simple contact form application for Django.
+A contact form application for Django.
 
 .. image:: https://travis-ci.org/jbergantine/django-contact-form.svg?branch=develop
 
