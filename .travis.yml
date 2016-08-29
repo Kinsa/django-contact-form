@@ -4,7 +4,6 @@ env:
   - TOX_ENV=py27-18
   - TOX_ENV=py27-19
   - TOX_ENV=py27-110
-  - TOX_ENV=py32-18
   - TOX_ENV=py33-18
   - TOX_ENV=py34-18
   - TOX_ENV=py34-19
@@ -14,8 +13,7 @@ env:
   - TOX_ENV=py35-110
 # command to install dependencies
 install:
-  - travis_retry pip install "virtualenv<14.0.0" "tox>=1.9"
-  #- pip install tox
+  - pip install tox
 # command to run tests
 script:
   - tox -e $TOX_ENV

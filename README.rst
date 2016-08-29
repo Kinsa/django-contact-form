@@ -90,3 +90,19 @@ Developing
 django_contact_form follows the `Git Flow branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_.
 
 When releasing, bump the version number in the app's ``__init__.py`` file.
+
+Testing
+=======
+
+::
+
+ $ python setup.py test
+
+With TOX
+
+First, install Tox, then run the tests. This will test against the Django versions specified in the environments specified in the ``tox.ini`` file
+
+::
+
+ $ pip install tox
+ $ tox
