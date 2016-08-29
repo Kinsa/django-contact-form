@@ -2,6 +2,15 @@
  Django Contact Form
 =====================
 
+A simple contact form application for Django.
+
+.. image:: https://travis-ci.org/jbergantine/django-contact-form.svg?branch=develop
+
+`View builds on TravisCI.`__
+
+__ https://travis-ci.org/jbergantine/django-contact-form
+
+
 Installation from Source
 ========================
 
@@ -38,7 +47,7 @@ In the project's ``urls.py`` file add: ::
 
  url(r'^contact/',
      include('django_contact_form.urls', namespace='contact')),
- 
+
 This makes the form available at ``{% url 'contact:contact' %}`` and the success page available at ``{% url 'contact:success' %}``.
 
 Setup the Recipients of the Contact Form
