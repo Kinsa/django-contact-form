@@ -89,7 +89,7 @@ Developing
 
 django_contact_form follows the `Git Flow branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_.
 
-When releasing, bump the version number in the app's ``__init__.py`` file.
+When releasing, bump the version number in the project's ``setup.py`` file.
 
 Testing
 =======
