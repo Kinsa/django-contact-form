@@ -40,8 +40,11 @@ class RoutingTest(TestCase):
         self.assertTemplateUsed(response, 'contact/success.html')
 
         # Check that the response is being properly routed.
-        self.failUnlessEqual(response.redirect_chain,
-                             [('http://testserver/contact/thanks/', 302)])
+        self.assertRedirects(
+            response,
+            reverse('contact:success'),
+            host='testserver'
+        )
 
     def test_message_is_required(self):
         self.post_dict['message'] = ''
@@ -75,8 +78,11 @@ class RoutingTest(TestCase):
         self.assertTemplateUsed(response, 'contact/success.html')
 
         # Check that the response is being properly routed.
-        self.failUnlessEqual(response.redirect_chain,
-                             [('http://testserver/contact/thanks/', 302)])
+        self.assertRedirects(
+            response,
+            reverse('contact:success'),
+            host='testserver'
+        )
 
     def test_captcha_accepts_string(self):
         self.post_dict['captcha'] = 'thirteen'
@@ -92,8 +98,11 @@ class RoutingTest(TestCase):
         self.assertTemplateUsed(response, 'contact/success.html')
 
         # Check that the response is being properly routed.
-        self.failUnlessEqual(response.redirect_chain,
-                             [('http://testserver/contact/thanks/', 302)])
+        self.assertRedirects(
+            response,
+            reverse('contact:success'),
+            host='testserver'
+        )
 
     def test_captcha_accepts_case_incensitive_string(self):
         self.post_dict['captcha'] = 'ThIrTeEN'
@@ -109,8 +118,11 @@ class RoutingTest(TestCase):
         self.assertTemplateUsed(response, 'contact/success.html')
 
         # Check that the response is being properly routed.
-        self.failUnlessEqual(response.redirect_chain,
-                             [('http://testserver/contact/thanks/', 302)])
+        self.assertRedirects(
+            response,
+            reverse('contact:success'),
+            host='testserver'
+        )
 
     def test_captcha_fails_with_invalid_value(self):
         self.post_dict['captcha'] = 'spam'
