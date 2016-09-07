@@ -25,7 +25,7 @@ class RoutingTest(TestCase):
                                     self.post_dict,
                                     follow=False)
 
-        # Check that the response is 200 OK.
+        # Check that the response is 302 Redirect (theoretically to the success page).
         self.failUnlessEqual(response.status_code, 302)
 
     def test_thanks_url(self):
