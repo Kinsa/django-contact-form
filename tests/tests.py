@@ -1,6 +1,10 @@
-from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
+
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 
 class RoutingTest(TestCase):
@@ -25,7 +29,7 @@ class RoutingTest(TestCase):
                                     self.post_dict,
                                     follow=False)
 
-        # Check that the response is 200 OK.
+        # Check that the response is 302 Redirect (theoretically to the success page).
         self.failUnlessEqual(response.status_code, 302)
 
     def test_thanks_url(self):
@@ -43,7 +47,6 @@ class RoutingTest(TestCase):
         self.assertRedirects(
             response,
             reverse('contact:success'),
-            host='testserver'
         )
 
     def test_message_is_required(self):
@@ -81,7 +84,6 @@ class RoutingTest(TestCase):
         self.assertRedirects(
             response,
             reverse('contact:success'),
-            host='testserver'
         )
 
     def test_captcha_accepts_string(self):
@@ -101,7 +103,6 @@ class RoutingTest(TestCase):
         self.assertRedirects(
             response,
             reverse('contact:success'),
-            host='testserver'
         )
 
     def test_captcha_accepts_case_incensitive_string(self):
@@ -121,7 +122,6 @@ class RoutingTest(TestCase):
         self.assertRedirects(
             response,
             reverse('contact:success'),
-            host='testserver'
         )
 
     def test_captcha_fails_with_invalid_value(self):
