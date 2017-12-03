@@ -14,7 +14,7 @@ setup(
     packages=find_packages(exclude=["tests"]),
     install_requires=['django>=1.8', 'django-floppyforms'],
     author='Joe Bergantine',
-    author_email='jbergantine@gmail.com',
+    author_email='joe.bergantine@gmail.com',
     description=description,
     long_description=long_description,
     url='https://github.com/jbergantine/django-contact-form',
