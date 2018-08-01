@@ -4,11 +4,11 @@
 
 A contact form application for Django.
 
-.. image:: https://travis-ci.org/jbergantine/django-contact-form.svg?branch=develop
+.. image:: https://travis-ci.org/bergantine/django-contact-form.svg?branch=develop
 
 `View builds on TravisCI.`__
 
-__ https://travis-ci.org/jbergantine/django-contact-form
+__ https://travis-ci.org/bergantine/django-contact-form
 
 
 Installation from Source
@@ -16,7 +16,7 @@ Installation from Source
 
 ::
 
- $ git clone git@github.com:jbergantine/django-contact-form.git
+ $ git clone git@github.com:bergantine/django-contact-form.git
  $ cd django-contact-form
  $ python setup.py install
 
@@ -27,7 +27,7 @@ Include in the PIP requirements file the following lines:
 
 ::
 
- -e git://github.com/jbergantine/django-contact-form.git@master#egg=django_contact_form
+ -e git://github.com/bergantine/django-contact-form.git@master#egg=django_contact_form
 
 And then install as normal (IE:)
 
@@ -40,7 +40,6 @@ Setup the Project For the Application
 
 Add to the project's ``settings.py`` file tuple of installed apps: ::
 
- 'floppyforms',
  'django_contact_form',
 
 In the project's ``urls.py`` file add: ::

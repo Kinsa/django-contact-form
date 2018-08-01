@@ -86,46 +86,17 @@ class RoutingTest(TestCase):
             reverse('contact:success'),
         )
 
-    def test_captcha_accepts_string(self):
+    def test_captcha_does_not_accept_string(self):
         self.post_dict['captcha'] = 'thirteen'
 
         response = self.client.post(reverse('contact:contact'),
                                     self.post_dict,
                                     follow=True)
-
-        # Check that the response is 200 OK.
-        self.failUnlessEqual(response.status_code, 200)
-
-        # Check that the correct template is being used.
-        self.assertTemplateUsed(response, 'contact/success.html')
-
-        # Check that the response is being properly routed.
-        self.assertRedirects(
-            response,
-            reverse('contact:success'),
-        )
-
-    def test_captcha_accepts_case_incensitive_string(self):
-        self.post_dict['captcha'] = 'ThIrTeEN'
-
-        response = self.client.post(reverse('contact:contact'),
-                                    self.post_dict,
-                                    follow=True)
-
-        # Check that the response is 200 OK.
-        self.failUnlessEqual(response.status_code, 200)
-
-        # Check that the correct template is being used.
-        self.assertTemplateUsed(response, 'contact/success.html')
-
-        # Check that the response is being properly routed.
-        self.assertRedirects(
-            response,
-            reverse('contact:success'),
-        )
+        self.assertFormError(response, 'form', 'captcha',
+                             [u'Enter a whole number.'])
 
     def test_captcha_fails_with_invalid_value(self):
-        self.post_dict['captcha'] = 'spam'
+        self.post_dict['captcha'] = 78
         response = self.client.post(reverse('contact:contact'), self.post_dict)
         self.assertFormError(response, 'form', 'captcha',
                              [u'Double check your math.'])
