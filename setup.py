@@ -12,7 +12,7 @@ setup(
     name='django-contact-form',
     version='1.6.2',
     packages=find_packages(exclude=["tests"]),
-    install_requires=['django>=1.11', 'django-floppyforms'],
+    install_requires=['django>=1.11'],
     author='Joe Bergantine',
     author_email='joe.bergantine@gmail.com',
     description=description,
