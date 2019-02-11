@@ -17,16 +17,22 @@ matrix:
       env: TOXENV=py35-20
     - python: 3.5
       env: TOXENV=py35-21
+    - python: 3.5
+      env: TOXENV=py35-22
     - python: 3.6
       env: TOXENV=py36-111
     - python: 3.6
       env: TOXENV=py36-20
     - python: 3.6
       env: TOXENV=py36-21
+    - python: 3.6
+      env: TOXENV=py36-22
     - python: 3.7-dev
       env: TOXENV=py37-20
     - python: 3.7-dev
       env: TOXENV=py37-21
+    - python: 3.7-dev
+      env: TOXENV=py37-22
 
 # command to install dependencies
 install:
