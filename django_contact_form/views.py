@@ -14,11 +14,11 @@ except ImportError:
 from .forms import ContactForm
 
 
-def send_mail_wrapped(current_site_name, message, recipients, sender_email):
+def send_mail_wrapped(current_site_name, message, recipients, sent_from):
     send_mail(
-        'Message from %s' % current_site_name,  # Email Subject
-        '%s' % message,  # Email Body
-        settings.DEFAULT_FROM_EMAIL,  # Email From Value (Sender); don't use `sender_email`, DMARC spoofing filters may kick in and prevent the mail from being sent
+        f'Message from {current_site_name}',  # Email Subject
+        f'{message}',  # Email Body
+        sent_from,  # Email From Value (Sender)
         [i[1] for i in recipients],  # Email Recipients
     )
 
@@ -37,31 +37,17 @@ def contact(request):
         if form.is_valid():
             sender_email = form.cleaned_data['email']
 
-            try:
-                send_mail_wrapped(
-                    current_site_name,
-                    form.cleaned_data['message'],
-                    recipients,
-                    sender_email
-                )
+            message = 'Message from: %s\n---\n\n%s' % (
+                form.cleaned_data['email'],
+                form.cleaned_data['message']
+            )
 
-            except SMTPRecipientsRefused:
-                # Some clients (Google, Microsoft) require use of their SMTP
-                # servers. In that case, fall back on the DEFAULT_FROM_EMAIL
-                # constant, including the sender's email in the body since their
-                # email will no longer be from them.
-
-                message = 'Message from: %s\n---\n\n%s' % (
-                    form.cleaned_data['email'],
-                    form.cleaned_data['message']
-                )
-
-                send_mail_wrapped(
-                    current_site_name,
-                    message,
-                    recipients,
-                    settings.DEFAULT_FROM_EMAIL
-                )
+            send_mail_wrapped(
+                current_site_name,
+                message,
+                recipients,
+                settings.DEFAULT_FROM_EMAIL  # don't use `sender_email`, DMARC spoofing filters may kick in and prevent the mail from being sent
+            )
 
             return HttpResponseRedirect(reverse('contact:success'))
     else:
