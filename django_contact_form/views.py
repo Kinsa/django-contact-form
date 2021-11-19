@@ -18,7 +18,7 @@ def send_mail_wrapped(current_site_name, message, recipients, sender_email):
     send_mail(
         'Message from %s' % current_site_name,  # Email Subject
         '%s' % message,  # Email Body
-        sender_email,  # Email From Value (Sender)
+        settings.DEFAULT_FROM_EMAIL,  # Email From Value (Sender); don't use `sender_email`, DMARC spoofing filters may kick in and prevent the mail from being sent
         [i[1] for i in recipients],  # Email Recipients
     )
 
