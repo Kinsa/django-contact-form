@@ -1,4 +1,4 @@
-Copyright (c) 2010, Joe Bergantine
+Copyright (c) 2024, Kinsa Creative Incorporated
 
 Includes code from django-contact-form by James Bennett.
 Copyright (c) 2007, James Bennett
